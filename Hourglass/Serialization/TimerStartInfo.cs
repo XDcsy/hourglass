@@ -18,6 +18,7 @@ namespace Hourglass.Serialization
         /// Gets or sets the <see cref="TimerStartToken"/>.
         /// </summary>
         public TimerStartToken TimerStartToken { get; set; }
+        public string startTime { get; set; }
 
         /// <summary>
         /// Returns a <see cref="TimerStartInfo"/> for a <see cref="TimerStart"/>.

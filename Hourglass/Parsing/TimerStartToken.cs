@@ -26,6 +26,7 @@ namespace Hourglass.Parsing
         /// Gets a value indicating whether the token is valid.
         /// </summary>
         public abstract bool IsValid { get; }
+        public string startTime;
 
         /// <summary>
         /// Returns a <see cref="TimerStartToken"/> for the specified string, or <c>null</c> if the string is not a

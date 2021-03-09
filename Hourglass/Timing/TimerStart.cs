@@ -37,7 +37,7 @@ namespace Hourglass.Timing
         /// A <see cref="TimerStartToken"/>.
         /// </summary>
         private readonly TimerStartToken timerStartToken;
-        private DateTime startTime;
+        private readonly string currentStartTime;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TimerStart"/> class.
@@ -49,8 +49,10 @@ namespace Hourglass.Timing
             {
                 throw new ArgumentNullException("timerStartToken");
             }
-            this.startTime = DateTime.Now;
+
             this.timerStartToken = timerStartToken;
+            this.timerStartToken.startTime = DateTime.Now.ToString();
+            this.currentStartTime = DateTime.Now.ToString();
         }
 
         /// <summary>
@@ -63,8 +65,10 @@ namespace Hourglass.Timing
             {
                 throw new ArgumentNullException("timerStartInfo");
             }
-            this.startTime = DateTime.Now;
+
+
             this.timerStartToken = timerStartInfo.TimerStartToken;
+            this.timerStartToken.startTime = timerStartInfo.startTime;
         }
 
         /// <summary>
@@ -179,7 +183,7 @@ namespace Hourglass.Timing
 
         public string ToStringWithTime()
         {
-            return this.timerStartToken.ToString() + "  " + this.startTime;
+            return this.timerStartToken.ToString() + "  " + this.timerStartToken.startTime;
         }
 
         /// <summary>
@@ -188,7 +192,7 @@ namespace Hourglass.Timing
         /// <returns>The representation of the <see cref="TimerStart"/> used for XML serialization.</returns>
         public TimerStartInfo ToTimerStartInfo()
         {
-            return new TimerStartInfo { TimerStartToken = this.timerStartToken };
+            return new TimerStartInfo { TimerStartToken = this.timerStartToken, startTime = this.currentStartTime };
         }
     }
 }
