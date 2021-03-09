@@ -36,7 +36,7 @@ namespace Hourglass.Timing
         /// <summary>
         /// A <see cref="TimerStartToken"/>.
         /// </summary>
-        private readonly TimerStartToken timerStartToken;
+        public readonly TimerStartToken timerStartToken;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TimerStart"/> class.

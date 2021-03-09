@@ -17,6 +17,7 @@ namespace Hourglass.Windows
     using Hourglass.Extensions;
     using Hourglass.Managers;
     using Hourglass.Properties;
+    using Hourglass.Serialization;
     using Hourglass.Timing;
 
     /// <summary>
@@ -868,6 +869,12 @@ namespace Hourglass.Windows
         {
             MenuItem menuItem = (MenuItem)sender;
             TimerStart timerStart = (TimerStart)menuItem.Tag;
+            // create a new timerStart object so that the new startTime does not affect the pervious remembered inputs
+            // perform (token -> string -> token) to deep copy it
+            string tokenStr = timerStart.ToTimerStartInfo().TimerStartToken.ToString();
+            TimerStartInfo info = new TimerStartInfo { TimerStartToken = Parsing.TimerStartToken.FromString(tokenStr)} ;
+            info.TimerStartToken.startTime = DateTime.Now.ToString();
+            TimerStart newTimerStart = TimerStart.FromTimerStartInfo(info);
 
             TimerWindow window;
             if (this.timerWindow.Timer.State == TimerState.Stopped || this.timerWindow.Timer.State == TimerState.Expired)
@@ -881,7 +888,7 @@ namespace Hourglass.Windows
                 window.RestoreFromWindow(this.timerWindow);
             }
 
-            window.Show(timerStart);
+            window.Show(newTimerStart);
         }
 
         /// <summary>
