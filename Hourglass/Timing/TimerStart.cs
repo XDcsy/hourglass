@@ -37,6 +37,7 @@ namespace Hourglass.Timing
         /// A <see cref="TimerStartToken"/>.
         /// </summary>
         private readonly TimerStartToken timerStartToken;
+        private DateTime startTime;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TimerStart"/> class.
@@ -48,7 +49,7 @@ namespace Hourglass.Timing
             {
                 throw new ArgumentNullException("timerStartToken");
             }
-
+            this.startTime = DateTime.Now;
             this.timerStartToken = timerStartToken;
         }
 
@@ -62,7 +63,7 @@ namespace Hourglass.Timing
             {
                 throw new ArgumentNullException("timerStartInfo");
             }
-
+            this.startTime = DateTime.Now;
             this.timerStartToken = timerStartInfo.TimerStartToken;
         }
 
@@ -174,6 +175,11 @@ namespace Hourglass.Timing
         public override string ToString()
         {
             return this.timerStartToken.ToString();
+        }
+
+        public string ToStringWithTime()
+        {
+            return this.timerStartToken.ToString() + "  " + this.startTime;
         }
 
         /// <summary>

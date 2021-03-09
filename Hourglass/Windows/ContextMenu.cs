@@ -839,7 +839,7 @@ namespace Hourglass.Windows
                 foreach (TimerStart timerStart in TimerStartManager.Instance.TimerStarts)
                 {
                     MenuItem timerMenuItem = new MenuItem();
-                    timerMenuItem.Header = timerStart.ToString();
+                    timerMenuItem.Header = timerStart.ToStringWithTime();
                     timerMenuItem.Tag = timerStart;
                     timerMenuItem.Click += this.RecentInputMenuItemClick;
 

@@ -80,7 +80,7 @@ namespace Hourglass.Managers
         public void Add(TimerStart timerStart)
         {
             // Remove all equivalent objects
-            this.timerStarts.RemoveAll(e => e.ToString() == timerStart.ToString());
+            this.timerStarts.RemoveAll(e => e.ToStringWithTime() == timerStart.ToStringWithTime());
 
             // Add the object to the top of the list
             this.timerStarts.Insert(0, timerStart);
