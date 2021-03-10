@@ -75,8 +75,8 @@ namespace Hourglass.Managers
             }
 
             // Show an error dialog
-            ErrorDialog errorDialog = new ErrorDialog();
-            errorDialog.ShowDialog(Resources.ErrorManagerUnexpectedError, details: errorMessage);
+            // ErrorDialog errorDialog = new ErrorDialog();
+            // errorDialog.ShowDialog(Resources.ErrorManagerUnexpectedError, details: errorMessage);
         }
 
         /// <summary>
